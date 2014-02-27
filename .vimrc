@@ -22,6 +22,13 @@ Bundle 'godlygeek/tabular'
 """"""""""""""""""""""""""""""
 " end puppet bundles
 """"""""""""""""""""""""""""""
+""""""""""""""""""""""""""""""
+" json bundles
+""""""""""""""""""""""""""""""
+Bundle 'elzr/vim-json'
+""""""""""""""""""""""""""""""
+" end json bundles
+""""""""""""""""""""""""""""""
 
 " syntax check
 Bundle 'scrooloose/syntastic'
@@ -80,6 +87,7 @@ filetype plugin indent on
 " Set specific settings depending on filetype this way
 if has('autocmd')
   autocmd filetype python set expandtab tabstop=4 shiftwidth=4
+  autocmd filetype puppet set expandtab tabstop=2 shiftwidth=2
 endif
 
 " Set syntax on. Use a defined color schema found in .vim/colors/
