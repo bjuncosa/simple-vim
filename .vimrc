@@ -26,6 +26,12 @@ Bundle 'godlygeek/tabular'
 " json bundles
 """"""""""""""""""""""""""""""
 Bundle 'elzr/vim-json'
+" vim-json
+" Map z and r to reset folding
+autocmd FileType json map zr :syn sync fromstart<CR>
+autocmd FileType json set foldmethod=syntax
+autocmd FileType json set foldlevel=100
+let g:vim_json_syntax_conceal = 0
 """"""""""""""""""""""""""""""
 " end json bundles
 """"""""""""""""""""""""""""""
