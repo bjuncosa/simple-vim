@@ -6,7 +6,7 @@ set rtp+=~/.vim/bundle/vundle/
 call vundle#rc()
 
 " let Vundle manage Vundle
-" required! 
+" required!
 Bundle 'gmarik/vundle'
 
 " My bundles here:
@@ -22,6 +22,7 @@ Bundle 'godlygeek/tabular'
 """"""""""""""""""""""""""""""
 " end puppet bundles
 """"""""""""""""""""""""""""""
+
 """"""""""""""""""""""""""""""
 " json bundles
 """"""""""""""""""""""""""""""
@@ -36,8 +37,23 @@ let g:vim_json_syntax_conceal = 0
 " end json bundles
 """"""""""""""""""""""""""""""
 
+" colors
+Bundle 'altercation/vim-colors-solarized'
+
+"Powerline
+"Bundle 'Lokaltog/powerline'
+
 " syntax check
 Bundle 'scrooloose/syntastic'
+
+" Autocomplete snipped
+Bundle 'SirVer/ultisnips'
+
+" Trigger configuration. Do not use <tab> if you use
+" https://github.com/Valloric/YouCompleteMe.
+"let g:UltiSnipsExpandTrigger="<tab>"
+"let g:UltiSnipsJumpForwardTrigger="<c-b>"
+"let g:UltiSnipsJumpBackwardTrigger="<c-z>"
 
 filetype plugin indent on     " required!
 
@@ -81,6 +97,8 @@ set wildignore=*.swp,*.bak,*.pyc,*.class
 set title                " change the terminal's title
 set visualbell           " don't beep
 set noerrorbells         " don't beep
+"highlight ColorColumn ctermbg=232 guibg=232
+set colorcolumn=80       " Print a line in column 80
 
 " Do not write backup files when editing a file
 set nobackup
@@ -96,15 +114,17 @@ if has('autocmd')
   autocmd filetype puppet set expandtab tabstop=2 shiftwidth=2
 endif
 
+let g:solarized_termcolors=256
 " Set syntax on. Use a defined color schema found in .vim/colors/
 if &t_Co >= 256 || has("gui_running")
-  colorscheme mustang
+  colorscheme solarized
 endif
 
 if &t_Co > 2 || has("gui_running")
   " switch syntax highlighting on, when the terminal has colors
   syntax on
 endif
+set background=dark
 
 set list
 set listchars=tab:>.,trail:.,extends:#,nbsp:.
@@ -139,3 +159,5 @@ nmap <C-j> :tabprevious<CR>
 nmap <C-k> :tabnext<CR>
 nmap <C-t> :tabnew<CR>
 
+let g:syntastic_puppet_checkers=['puppetlint']
+let g:syntastic_python_checkers=['pylint']
