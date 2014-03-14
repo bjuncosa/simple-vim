@@ -136,7 +136,8 @@ endif
 " Toggle paste mode on/off with <leader>p
 set pastetoggle=<leader>p
 
-" Enable mous
+" Enable mouse
+set clipboard=unnamedplus
 set mouse=a
 
 set number        " always show line numbers
@@ -159,5 +160,37 @@ nmap <C-j> :tabprevious<CR>
 nmap <C-k> :tabnext<CR>
 nmap <C-t> :tabnew<CR>
 
-let g:syntastic_puppet_checkers=['puppetlint']
-let g:syntastic_python_checkers=['pylint']
+let g:syntastic_puppet_checkers        = ['puppetlint']
+let g:syntastic_puppet_puppetlint_args = '--no-80chars-check'
+let g:syntastic_python_checkers        = ['pylint']
+
+
+""""""""""""""""""""""" Equal Align
+let g:equalAlignEnabled = 1
+nmap <leader>e :call ToggleEqualAlign()<CR>
+function! ToggleEqualAlign()
+  if g:equalAlignEnabled
+    let g:equalAlignEnabled = 0
+  else
+    let g:equalAlignEnabled = 1
+  endif
+endfunction
+
+inoremap <buffer> <silent> =<Space> =<Esc>:call <SID>equalalign()<CR>A
+function! s:equalalign()
+  if g:equalAlignEnabled
+    let p                 = '^\s*\w+\s+[=]\s+[^=]*$'
+    let lineContainsEqual = getline('.') =~# '^\s*\w+\s+[=]\s'
+    let equalOnPrevLine   = getline(line('.') - 1) =~# p
+    let equalOnNextLine   = getline(line('.') + 1) =~# p
+    if exists(':Tabularize') " && lineContainsEqual && (equalOnPrevLine || equalOnNextLine)
+        Tabularize /^[^=]*\zs=/l1
+        normal! 0 1A
+    else
+        normal! 0 1A
+    endif
+  else
+    normal! 0 1A
+  endif
+endfunction
+
