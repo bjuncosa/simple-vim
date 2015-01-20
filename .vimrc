@@ -67,7 +67,7 @@ let g:vim_json_syntax_conceal = 0
 """"""""""""""""""""""""""""""
 " Dockerfile
 """"""""""""""""""""""""""""""
-Plugin "ekalinin/Dockerfile.vim"
+Bundle "ekalinin/Dockerfile.vim"
 """"""""""""""""""""""""""""""
 " end Dockerfile
 """"""""""""""""""""""""""""""
