@@ -14,6 +14,33 @@ Bundle 'gmarik/vundle'
 Bundle 'scrooloose/nerdtree'
 
 """"""""""""""""""""""""""""""
+" autocomplete
+""""""""""""""""""""""""""""""
+Bundle 'Shougo/neocomplete.vim'
+"Note: This option must set it in .vimrc(_vimrc).  NOT IN .gvimrc(_gvimrc)!
+" Disable AutoComplPop.
+let g:acp_enableAtStartup = 0
+" Use neocomplete.
+let g:neocomplete#enable_at_startup = 1
+" Use smartcase.
+let g:neocomplete#enable_smart_case = 1
+" Enable omni completion.
+autocmd FileType css setlocal omnifunc=csscomplete#CompleteCSS
+autocmd FileType html,markdown setlocal omnifunc=htmlcomplete#CompleteTags
+autocmd FileType javascript setlocal omnifunc=javascriptcomplete#CompleteJS
+autocmd FileType python setlocal omnifunc=pythoncomplete#Complete
+autocmd FileType xml setlocal omnifunc=xmlcomplete#CompleteTags
+
+" Enable heavy omni completion.
+if !exists('g:neocomplete#sources#omni#input_patterns')
+  let g:neocomplete#sources#omni#input_patterns = {}
+endif
+"Bundle 'Shougo/neocomplcache.vim'
+"let g:neocomplcache_enable_at_startup =1
+""""""""""""""""""""""""""""""
+" end autocomplete
+""""""""""""""""""""""""""""""
+""""""""""""""""""""""""""""""
 " puppet bundles
 """"""""""""""""""""""""""""""
 Bundle 'rodjek/vim-puppet'
@@ -46,14 +73,14 @@ Bundle 'altercation/vim-colors-solarized'
 " syntax check
 Bundle 'scrooloose/syntastic'
 
-" Autocomplete snipped
+" Autocomplete snippet
 Bundle 'SirVer/ultisnips'
 
 " Trigger configuration. Do not use <tab> if you use
 " https://github.com/Valloric/YouCompleteMe.
-"let g:UltiSnipsExpandTrigger="<tab>"
-"let g:UltiSnipsJumpForwardTrigger="<c-b>"
-"let g:UltiSnipsJumpBackwardTrigger="<c-z>"
+let g:UltiSnipsExpandTrigger="<leader><space>"
+let g:UltiSnipsJumpForwardTrigger="<c-b>"
+let g:UltiSnipsJumpBackwardTrigger="<c-z>"
 
 filetype plugin indent on     " required!
 
@@ -137,8 +164,8 @@ endif
 set pastetoggle=<leader>p
 
 " Enable mouse
-set clipboard=unnamedplus
-set mouse=a
+"set clipboard=unnamedplus
+"set mouse=a
 
 set number        " always show line numbers
 
