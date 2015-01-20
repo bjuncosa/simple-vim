@@ -64,6 +64,15 @@ let g:vim_json_syntax_conceal = 0
 " end json bundles
 """"""""""""""""""""""""""""""
 
+""""""""""""""""""""""""""""""
+" Dockerfile
+""""""""""""""""""""""""""""""
+Plugin "ekalinin/Dockerfile.vim"
+""""""""""""""""""""""""""""""
+" end Dockerfile
+""""""""""""""""""""""""""""""
+
+
 " colors
 Bundle 'altercation/vim-colors-solarized'
 
