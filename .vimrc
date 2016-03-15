@@ -12,6 +12,7 @@ Bundle 'gmarik/vundle'
 " My bundles here:
 "
 Bundle 'scrooloose/nerdtree'
+Bundle 'aperezdc/hipack-vim'
 
 """"""""""""""""""""""""""""""
 " autocomplete
@@ -51,6 +52,14 @@ Bundle 'godlygeek/tabular'
 """"""""""""""""""""""""""""""
 
 """"""""""""""""""""""""""""""
+" systemd bundles
+""""""""""""""""""""""""""""""
+Bundle 'Matt-Deacalion/vim-systemd-syntax'
+""""""""""""""""""""""""""""""
+" end systemd bundles
+""""""""""""""""""""""""""""""
+
+""""""""""""""""""""""""""""""
 " json bundles
 """"""""""""""""""""""""""""""
 Bundle 'elzr/vim-json'
@@ -81,6 +90,11 @@ Bundle 'altercation/vim-colors-solarized'
 
 " syntax check
 Bundle 'scrooloose/syntastic'
+let g:syntastic_aggregate_errors = 1
+let g:syntastic_error_symbol = '✗'
+let g:syntastic_warning_symbol = '⚠'
+let g:syntastic_style_error_symbol = '🚨'
+let g:syntastic_style_warning_symbol = '🚨'
 
 " Autocomplete snippet
 Bundle 'SirVer/ultisnips'
@@ -198,11 +212,14 @@ nmap <C-t> :tabnew<CR>
 
 let g:syntastic_puppet_checkers        = ['puppetlint']
 let g:syntastic_puppet_puppetlint_args = '--no-80chars-check'
-let g:syntastic_python_checkers        = ['pylint']
+
+let python_space_errors         = 1
+let python_highlight_all        = 1
+let g:syntastic_python_checkers = ['pep8', 'pylint']
 
 
 """"""""""""""""""""""" Equal Align
-let g:equalAlignEnabled = 1
+let g:equalAlignEnabled = 0
 nmap <leader>e :call ToggleEqualAlign()<CR>
 function! ToggleEqualAlign()
   if g:equalAlignEnabled
